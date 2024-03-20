@@ -4,6 +4,13 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'isAdmin',
+      title: 'Is Admin',
+      type: 'boolean',
+      description: 'User is an admin and can access the CMS',
+      initialValue: false,
+    },
+    {
       name: 'name',
       title: 'Name',
       type: 'string'
@@ -12,6 +19,12 @@ export default {
       name: 'email',
       title: 'Email',
       type: 'string'
+    },
+    {
+      name: 'about',
+      title: 'About',
+      type: 'text',
+      description: 'A short bio for the user'
     },
     {
       name: 'image',
