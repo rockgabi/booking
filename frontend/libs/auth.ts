@@ -1,7 +1,6 @@
-import NextAuth, { NextAuthOptions } from 'next-auth';
+import NextAuth, { NextAuthOptions, getServerSession as _getServerSession } from 'next-auth';
 import { SanityAdapter, SanityCredentials } from 'next-auth-sanity';
 import GithubProvider from 'next-auth/providers/github';
-import GoogleProvider from 'next-auth/providers/google';
 
 import sanityClient from './sanity';
 
@@ -11,11 +10,6 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GITHUB_CLIENT_ID as string,
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-    }),
-    SanityCredentials(sanityClient),
   ],
   session: {
     strategy: 'jwt',
@@ -44,3 +38,10 @@ export const authOptions: NextAuthOptions = {
 };
 
 export const handler = NextAuth(authOptions)
+
+/**
+ * Proxy function to getServerSession from next-auth to use our custom authOptions
+ */
+export function getServerSession() {
+  return _getServerSession(authOptions)
+}
