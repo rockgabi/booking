@@ -2,7 +2,7 @@ import NextAuth, { NextAuthOptions, getServerSession as _getServerSession } from
 import { SanityAdapter, SanityCredentials } from 'next-auth-sanity';
 import GithubProvider from 'next-auth/providers/github';
 
-import sanityClient from './sanity';
+import sanityClient from '../lib/sanity';
 
 export const authOptions: NextAuthOptions = {
   providers: [
