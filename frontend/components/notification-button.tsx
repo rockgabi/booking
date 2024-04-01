@@ -21,19 +21,17 @@ type Props = {
 
 export default function NotificationButton({ notifications }: Props) {
 
-  console.log('notifications', notifications)
-
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
   if (isDesktop) return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Bell />
+        <IconWithNotificationNumber>{notifications.length}</IconWithNotificationNumber>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="max-w-[360px]">
         <DropdownMenuLabel>Notifications</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        { notifications.map(notification => (
+        {notifications.map(notification => (
           <DropdownNotificationItem key={notification.id} {...notification} />
         ))}
       </DropdownMenuContent>
@@ -43,14 +41,14 @@ export default function NotificationButton({ notifications }: Props) {
   return <>
     <Drawer direction="top">
       <DrawerTrigger>
-        <Bell />
+        <IconWithNotificationNumber>{notifications.length}</IconWithNotificationNumber>
       </DrawerTrigger>
       <DrawerContent className="top-0 bottom-auto rounded-t-none rounded-b-[10px]">
         <DrawerHeader>
           <DrawerTitle className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Notifications</DrawerTitle>
           <DrawerDescription>See what&apos;s going on</DrawerDescription>
         </DrawerHeader>
-        { notifications.map(notification => (
+        {notifications.map(notification => (
           <DrawerNotificationItem key={notification.id} {...notification} />
         ))}
         <DrawerFooter>
@@ -87,4 +85,13 @@ function DropdownNotificationItem({ content, keepReadingLink }: NotificationItem
       {keepReadingLink && <Link href={keepReadingLink}> Learn more</Link>}.
     </span>
   </DropdownMenuItem>
+}
+
+function IconWithNotificationNumber({ children }: { children: React.ReactNode }) {
+  return <div className="relative">
+    <Bell />
+    { children && <div className="absolute top-0 right-0 w-4 h-4 flex items-center justify-center text-xs font-semibold bg-primary text-white rounded-full">
+      {children}
+    </div>}
+  </div>
 }
