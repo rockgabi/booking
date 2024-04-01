@@ -13,8 +13,15 @@ import {
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link";
 import { useMediaQuery } from "@/hooks/use-media-query"
+import { Notification } from "@/data/notifications"
 
-export default function NotificationButton() {
+type Props = {
+  notifications: Notification[]
+}
+
+export default function NotificationButton({ notifications }: Props) {
+
+  console.log('notifications', notifications)
 
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
@@ -26,8 +33,9 @@ export default function NotificationButton() {
       <DropdownMenuContent className="max-w-[360px]">
         <DropdownMenuLabel>Notifications</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownNotificationItem content="There are new home listings in your area." keepReadingLink="/listings"></DropdownNotificationItem>
-        <DropdownNotificationItem content="Looking for low prices? We&apos;ve got an entire page dedicated to finding you fantastic deals in your favourite places."></DropdownNotificationItem>
+        { notifications.map(notification => (
+          <DropdownNotificationItem key={notification.id} {...notification} />
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   )
@@ -42,10 +50,9 @@ export default function NotificationButton() {
           <DrawerTitle className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Notifications</DrawerTitle>
           <DrawerDescription>See what&apos;s going on</DrawerDescription>
         </DrawerHeader>
-
-        <DrawerNotificationItem content="There are new home listings in your area." keepReadingLink="/listings" />
-        <DrawerNotificationItem content="Looking for low prices? We&apos;ve got an entire page dedicated to finding you fantastic deals in your favourite places." />
-
+        { notifications.map(notification => (
+          <DrawerNotificationItem key={notification.id} {...notification} />
+        ))}
         <DrawerFooter>
           <DrawerClose asChild>
             <Button variant="outline">Close</Button>
