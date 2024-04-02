@@ -22,3 +22,4 @@ bun dev
 
 ### Notification Components
 [NotificationButton](./components/notification-button.tsx)
+[NotificationData](./data/notifications/index.ts)

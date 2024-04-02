@@ -1,10 +1,8 @@
 import { getServerSession } from "@/lib/auth";
-import { Bell } from 'lucide-react'
 import Link from "next/link";
-import Avatar from "./avatar";
-import { Button } from "./ui/button";
 import NotificationButton from "./notification-button";
 import notifications from "@/data/notifications";
+import SessionButton from "./session-button";
 
 export default async function Header() {
   const session = await getServerSession()
@@ -16,7 +14,7 @@ export default async function Header() {
         <NotificationButton notifications={notifications} />
         {
           session ? (
-            <Avatar src={session.user?.image as string} />
+            <SessionButton />
           ) : (
             <li>
               <Link href="/api/auth/signin">Sign In</Link>
