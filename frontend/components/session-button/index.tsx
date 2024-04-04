@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getServerSession } from "next-auth";
 import AvatarIcon from "./avatar-icon";
 import {
   DropdownMenu,
@@ -7,15 +8,29 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { ArrowDownToLine, MessageCircle, Plane, User2, UserRoundX, Wallet } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type Props = {
   className?: string
 }
 
 export default async function SessionButton({ className }: Props) {
+  const session = await getServerSession()
+
+  if (!session || !session.user) {
+    throw new Error('No user session found. Component relias on the user session.')
+  }
+
   return <DropdownMenu>
-  <DropdownMenuTrigger className={className}>
+  <DropdownMenuTrigger className={cn(
+    'flex items-center gap-3',
+    className
+  )}>
     <AvatarIcon />
+    <div className="hidden lg:flex flex-col items-start">
+      <span className="text-sm font-semibold">{session.user.name}</span>
+      <span className="text-xs">Beginner</span>
+    </div>
   </DropdownMenuTrigger>
   <DropdownMenuContent className="max-w-[360px]">
     <DropdownLinkItem href="/manage-account"><User2 /> Manage Account</DropdownLinkItem>

@@ -13,19 +13,17 @@ export default async function Header() {
   return (
     <header className="flex justify-between items-center p-4 bg-gray-800 text-white">
       <h1 className="text-2xl font-bold"><Link href="/">Booking</Link></h1>
-      <nav className="flex space-x-4 items-center">
+      <nav className="flex space-x-3 items-center">
         <NotificationButton notifications={notifications} className={buttonBg} />
         <Link href="/list-your-property" className={cn(
-          "leading-6 min-h-[32px]",
+          "leading-6 min-h-[32px] font-semibold",
           buttonBg
         )}>List your property</Link>
         {
           session ? (
             <SessionButton className={buttonBg} />
           ) : (
-            <li>
-              <Link href="/api/auth/signin">Sign In</Link>
-            </li>
+            <Link href="/api/auth/signin" className={buttonBg}>Sign In</Link>
           )
         }
       </nav>
