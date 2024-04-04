@@ -8,9 +8,13 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { ArrowDownToLine, MessageCircle, Plane, User2, UserRoundX, Wallet } from "lucide-react";
 
-export default async function SessionButton() {
+type Props = {
+  className?: string
+}
+
+export default async function SessionButton({ className }: Props) {
   return <DropdownMenu>
-  <DropdownMenuTrigger>
+  <DropdownMenuTrigger className={className}>
     <AvatarIcon />
   </DropdownMenuTrigger>
   <DropdownMenuContent className="max-w-[360px]">

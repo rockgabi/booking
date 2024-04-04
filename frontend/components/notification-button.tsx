@@ -16,16 +16,17 @@ import { useMediaQuery } from "@/hooks/use-media-query"
 import { Notification } from "@/data/notifications"
 
 type Props = {
-  notifications: Notification[]
+  notifications: Notification[],
+  className?: string
 }
 
-export default function NotificationButton({ notifications }: Props) {
+export default function NotificationButton({ notifications, className }: Props) {
 
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
   if (isDesktop) return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger className={className}>
         <IconWithNotificationNumber>{notifications.length}</IconWithNotificationNumber>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="max-w-[360px]">
@@ -40,7 +41,7 @@ export default function NotificationButton({ notifications }: Props) {
 
   return <>
     <Drawer direction="top">
-      <DrawerTrigger>
+      <DrawerTrigger className={className}>
         <IconWithNotificationNumber>{notifications.length}</IconWithNotificationNumber>
       </DrawerTrigger>
       <DrawerContent className="top-0 bottom-auto rounded-t-none rounded-b-[10px]">
