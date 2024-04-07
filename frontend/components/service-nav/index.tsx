@@ -1,7 +1,15 @@
-import { Bed, Car, CarTaxiFront, Plane, RollerCoaster } from "lucide-react"
+import { Bed, Car, CarTaxiFront, LucideIcon, Plane, RollerCoaster } from "lucide-react"
 import Link from "next/link"
 import { Button } from "../ui/button"
 import { cn } from "@/lib/utils"
+import ServiceButton from "./service-button"
+import dynamicIconImports from "lucide-react/dynamicIconImports"
+
+type Service = {
+  icon: LucideIcon
+  title: string
+  href: string
+}
 
 const services = [
   {
@@ -11,7 +19,7 @@ const services = [
   }, {
     icon: Plane,
     title: 'Flights',
-    href: '/flights'
+    href: '/'
   }, {
     icon: Car,
     title: 'Car rentals',
@@ -38,12 +46,10 @@ export default async function ServiceNav({ className }: Props) {
     className
   )}>
     {services.map((service) =>
-      <Link key={service.title} href={service.href}>
-        <Button variant="ghost" className="flex items-center gap-2">
-          <service.icon />
-          <span>{service.title}</span>
-        </Button>
-      </Link>
+      <ServiceButton key={service.title} title={service.title} href={service.href}>
+        <service.icon />
+        <span>{service.title}</span>
+      </ServiceButton>
     )}
   </div>
 }
