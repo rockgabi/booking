@@ -1,9 +1,7 @@
 import { Bed, Car, CarTaxiFront, LucideIcon, Plane, RollerCoaster } from "lucide-react"
-import Link from "next/link"
-import { Button } from "../ui/button"
 import { cn } from "@/lib/utils"
 import ServiceButton from "./service-button"
-import dynamicIconImports from "lucide-react/dynamicIconImports"
+import { ScrollArea, ScrollBar } from "../ui/scroll-area"
 
 type Service = {
   icon: LucideIcon
@@ -41,7 +39,9 @@ type Props = {
 
 export default async function ServiceNav({ className }: Props) {
 
-  return <div className={cn(
+  return <ScrollArea>
+    <ScrollBar orientation="horizontal" />
+    <div className={cn(
     "flex gap-3 px-4",
     className
   )}>
@@ -51,5 +51,6 @@ export default async function ServiceNav({ className }: Props) {
         <span>{service.title}</span>
       </ServiceButton>
     )}
-  </div>
+    </div>
+  </ScrollArea>
 }
