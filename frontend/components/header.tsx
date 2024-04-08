@@ -43,7 +43,7 @@ export default async function Header() {
         <ServiceNav className="mx-4 mb-8 xl:mb-16" />
 
         <div className="mx-8 mb-12 xl:mb-20">
-          <h2 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-2">Where to next, Gabriel?</h2>
+          <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-2">Where to next, Gabriel?</h2>
           <h3 className="text-xl lg:text-2xl">Find exclusive Member rewards in every corner of the world!</h3>
         </div>
       </div>
