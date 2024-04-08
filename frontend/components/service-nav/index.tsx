@@ -39,12 +39,9 @@ type Props = {
 
 export default async function ServiceNav({ className }: Props) {
 
-  return <ScrollArea>
+  return <ScrollArea className={className}>
     <ScrollBar orientation="horizontal" />
-    <div className={cn(
-    "flex gap-3 px-4",
-    className
-  )}>
+    <div className="flex gap-3 py-4">
     {services.map((service) =>
       <ServiceButton key={service.title} title={service.title} href={service.href}>
         <service.icon />
