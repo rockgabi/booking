@@ -1,5 +1,5 @@
 
-export type RecentSearches = {
+export type RecentSearch = {
   image: string
   heading: string
   date: string
@@ -7,7 +7,7 @@ export type RecentSearches = {
   href: string
 }
 
-const recentSearches: RecentSearches[] = [
+const recentSearches: RecentSearch[] = [
   {
     image: 'https://picsum.photos/200/200',
     heading: 'Tokyo',

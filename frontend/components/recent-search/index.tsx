@@ -2,7 +2,7 @@ import {
   Card,
   CardContent,
 } from "@/components/ui/card"
-import recentSearches, { type RecentSearches } from "@/data/recent-search"
+import recentSearches, { type RecentSearch as RecentSearchType } from "@/data/recent-search"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -13,7 +13,7 @@ export default async function RecentSearches() {
 }
 
 type RecentSearchListProps = {
-  recentSearches: RecentSearches[]
+  recentSearches: RecentSearchType[]
 }
 
 export async function RecentSearchList({ recentSearches }: RecentSearchListProps) {
@@ -36,10 +36,10 @@ export async function RecentSearch({ image, heading, date, numberOfPeople, href 
   return <Link href={href} className="hover:animate-pulse">
     <Card className="shadow-md">
       <CardContent className="flex items-center p-6 gap-6">
-        <Image src={image} alt={heading} width={100} height={100} />
-        <div className="flex flex-col gap-2">
-          <h4 className="font-bold">{heading}</h4>
-          <p className="">{date}, {numberOfPeople} people </p>
+        <Image src={image} alt={heading} width={100} height={100} className="rounded w-[64px] h-[64px]" />
+        <div className="flex flex-col gap-1">
+          <h4 className="text-sm font-bold">{heading}</h4>
+          <p className="text-xs">{date}, {numberOfPeople} people </p>
         </div>
       </CardContent>
     </Card>
