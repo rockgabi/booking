@@ -2,6 +2,7 @@ import { BrowseByType } from "@/components/browse-by-type";
 import Offers from "@/components/offers";
 import RecentSearches from "@/components/recent-search";
 import Section from "@/components/section";
+import TrendingDestinations from "@/components/trending-destinations";
 
 export default function Home() {
   return (
@@ -16,6 +17,10 @@ export default function Home() {
 
       <Section heading="Browse by type" subheading="Find the perfect place for your trip" className="mb-12 w-full">
         <BrowseByType />
+      </Section>
+
+      <Section heading="Trending destinations" subheading="Travelers searching for Japan also booked these" className="mb-12 w-full">
+        <TrendingDestinations />
       </Section>
     </main>
   );
