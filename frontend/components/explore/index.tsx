@@ -1,23 +1,15 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+import { ByType } from "../browse-by-type"
+import browseByTypes from "@/data/browse-by-type"
+import { Carousel, CarouselList } from "../carousel"
 
 type Props = {
 
 }
 
-export default async function BrowseByType() {
+export default async function Explore() {
   // get data from API
 
   return <Carousel>
-    <CarouselContent>
-      <BrowseByTypeList browseByTypes={browseByTypes} />
-    </CarouselContent>
-    <CarouselPrevious />
-    <CarouselNext />
+    <CarouselList data={browseByTypes} RenderItem={ByType} />
   </Carousel>
 }

@@ -1,4 +1,5 @@
 import { BrowseByType } from "@/components/browse-by-type";
+import Explore from "@/components/explore";
 import Offers from "@/components/offers";
 import RecentSearches from "@/components/recent-search";
 import Section from "@/components/section";
@@ -21,6 +22,10 @@ export default function Home() {
 
       <Section heading="Trending destinations" subheading="Travelers searching for Japan also booked these" className="mb-12 w-full">
         <TrendingDestinations />
+      </Section>
+
+      <Section heading="Explore Argentina" subheading="These popular destinations have a lot to offer" className="mb-12 w-full">
+        <Explore />
       </Section>
     </main>
   );

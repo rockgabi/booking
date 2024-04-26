@@ -34,7 +34,7 @@ export async function BrowseByTypeList({ browseByTypes }: BrowseByTypeListProps)
 
 type ByTypeProps = ByTypeType
 
-async function ByType({ image, heading, href }: ByTypeProps) {
+export async function ByType({ image, heading, href }: ByTypeProps) {
   return <CarouselItem className="basis-1/3 xl:basis-1/4">
     <Link href={href} className="hover:animate-pulse">
       <Card className="shadow-md">
