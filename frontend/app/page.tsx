@@ -4,6 +4,7 @@ import Offers from "@/components/offers";
 import RecentSearches from "@/components/recent-search";
 import Section from "@/components/section";
 import TrendingDestinations from "@/components/trending-destinations";
+import TripPlanner from "@/components/trip-planner";
 
 export default function Home() {
   return (
@@ -26,6 +27,10 @@ export default function Home() {
 
       <Section heading="Explore Argentina" subheading="These popular destinations have a lot to offer" className="mb-12 w-full">
         <Explore />
+      </Section>
+
+      <Section heading="Quick and easy trip planner" subheading="Pick a vibe and explore the top destinations in Brazil" className="mb-12 w-full">
+        <TripPlanner />
       </Section>
     </main>
   );
