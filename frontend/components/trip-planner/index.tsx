@@ -1,45 +1,58 @@
-import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group"
-import { Button } from "../ui/button"
+'use client'
 
-export default async function TripPlanner() {
+import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group"
+import { Button, ButtonProps } from "../ui/button"
+import { LegacyRef, ReactNode, forwardRef, useState } from "react"
+import { cn } from "@/lib/utils"
+
+export default function TripPlanner() {
+  const [vibe, setVibe] = useState("romance")
 
   return <div className="flex flex-col">
-    <PlannerVibeSelector />
+    <PlannerVibeSelector value={vibe} onValueChange={(v) => setVibe(v)} />
   </div>
 }
 
-function PlannerVibeSelector() {
-  return <ToggleGroup type="single">
-    <ToggleGroupItem value="romance" asChild>
-      <Button variant="ghost" className={cn({
-        "flex items-center gap-2": true,
-        'bg-accent text-accent-foreground': pathname === href
-      })}>
-        Romance
-      </Button>
-    </ToggleGroupItem>
-    <ToggleGroupItem value="beach" asChild>
-      <Button>Beach</Button>
-    </ToggleGroupItem>
-    <ToggleGroupItem value="outdoors" asChild>
-      <Button>Outdoors</Button>
-    </ToggleGroupItem>
-    <ToggleGroupItem value="city" asChild>
-      <Button>City</Button>
-    </ToggleGroupItem>
-    <ToggleGroupItem value="relax" asChild>
-      <Button>Relax</Button>
-    </ToggleGroupItem>
-  </ToggleGroup>
+type PlannerVibeSelectorProps = {
+  value: string
+  onValueChange: (value: string) => void
 }
 
+function PlannerVibeSelector({ value = "romance", onValueChange }: PlannerVibeSelectorProps) {
 
+  return (
+    <ToggleGroup value={value} onValueChange={onValueChange} type="single" className="justify-start">
+      <ToggleGroupItem value="romance" asChild>
+        <VibeButton active={value === "romance"}>Romance</VibeButton>
+      </ToggleGroupItem>
+      <ToggleGroupItem value="beach" asChild>
+        <VibeButton active={value === "beach"}>Beach</VibeButton>
+      </ToggleGroupItem>
+      <ToggleGroupItem value="outdoors" asChild>
+        <VibeButton active={value === "outdoors"}>Outdoors</VibeButton>
+      </ToggleGroupItem>
+      <ToggleGroupItem value="city" asChild>
+        <VibeButton active={value === "city"}>City</VibeButton>
+      </ToggleGroupItem>
+      <ToggleGroupItem value="relax" asChild>
+        <VibeButton active={value === "relax"}>Relax</VibeButton>
+      </ToggleGroupItem>
+    </ToggleGroup>
+  );
+}
 
-function VibeButton() {
+PlannerVibeSelector.displayName = "PlannerVibeSelector";
+
+interface Props extends ButtonProps {
+  active?: boolean
+  children: ReactNode
+}
+
+const VibeButton = forwardRef(({ active, children, ...props }: Props, ref) => {
   return <Button variant="ghost" className={cn({
     "flex items-center gap-2": true,
-    'bg-accent text-accent-foreground': pathname === href
-  })}>
+    'bg-accent text-accent-foreground': active
+  })} {...props} ref={ref as LegacyRef<HTMLButtonElement>}>
     {children}
   </Button>
-}
+})
