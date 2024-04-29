@@ -6,8 +6,9 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 import { cn } from "@/lib/utils"
+import { ReactNode, HTMLAttributes } from "react"
 
-export async function Carousel({ children }: { children: React.ReactNode }) {
+export async function Carousel({ children }: { children: ReactNode }) {
 
   return <UiCarousel>
     <CarouselContent>
@@ -18,16 +19,20 @@ export async function Carousel({ children }: { children: React.ReactNode }) {
   </UiCarousel>
 }
 
-export type CarouselData<D> = {
+interface RenderItemProps {
+  [key: string]: any
+}
+
+export type CarouselProps<D> = {
   data: D[]
-  RenderItem: (props: D) => React.ReactNode
+  RenderItem: (props: D) => ReactNode
   carouselItemClassName?: string
 }
 
-export async function CarouselList<D>({ data, RenderItem, carouselItemClassName }: CarouselData<D>) {
+export async function CarouselList<D extends RenderItemProps>({ data, RenderItem, carouselItemClassName }: CarouselProps<D>) {
   return data.map((props, index) => (
-    <CarouselItem className={cn("basis-1/3 xl:basis-1/4", carouselItemClassName)}>
-      <RenderItem key={index} {...props} />
+    <CarouselItem key={index} className={cn("basis-1/3 xl:basis-1/4", carouselItemClassName)}>
+      <RenderItem {...props} />
     </CarouselItem>
   ))
 }

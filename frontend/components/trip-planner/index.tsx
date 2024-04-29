@@ -4,12 +4,18 @@ import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group"
 import { Button, ButtonProps } from "../ui/button"
 import { LegacyRef, ReactNode, forwardRef, useState } from "react"
 import { cn } from "@/lib/utils"
+import { Carousel, CarouselList } from "../carousel"
+import GalleryItem from "../gallery-item"
+import tripPlannerItems from "@/data/trip-planner"
 
 export default function TripPlanner() {
   const [vibe, setVibe] = useState("romance")
 
   return <div className="flex flex-col">
     <PlannerVibeSelector value={vibe} onValueChange={(v) => setVibe(v)} />
+    <Carousel>
+      <CarouselList data={tripPlannerItems} RenderItem={GalleryItem} carouselItemClassName="w-1/4" />
+    </Carousel>
   </div>
 }
 
