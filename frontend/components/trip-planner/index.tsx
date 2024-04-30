@@ -11,10 +11,10 @@ import tripPlannerItems from "@/data/trip-planner"
 export default function TripPlanner() {
   const [vibe, setVibe] = useState("romance")
 
-  return <div className="flex flex-col">
-    <PlannerVibeSelector value={vibe} onValueChange={(v) => setVibe(v)} />
+  return <div className="flex flex-col gap-4">
+    <PlannerVibeSelector value={vibe} onValueChange={(v) => setVibe(v)} className="mx-[-12px]"/>
     <Carousel>
-      <CarouselList data={tripPlannerItems} RenderItem={GalleryItem} carouselItemClassName="w-1/4" />
+      <CarouselList data={tripPlannerItems} RenderItem={GalleryItem} carouselItemClassName="basis-1/3 sm:basis-1/4 md:basis-1/5 xl:basis-1/6" />
     </Carousel>
   </div>
 }
@@ -22,12 +22,13 @@ export default function TripPlanner() {
 type PlannerVibeSelectorProps = {
   value: string
   onValueChange: (value: string) => void
+  className?: string
 }
 
-function PlannerVibeSelector({ value = "romance", onValueChange }: PlannerVibeSelectorProps) {
+function PlannerVibeSelector({ value = "romance", onValueChange, className }: PlannerVibeSelectorProps) {
 
   return (
-    <ToggleGroup value={value} onValueChange={onValueChange} type="single" className="justify-start">
+    <ToggleGroup value={value} onValueChange={onValueChange} type="single" className={cn("justify-start", className)}>
       <ToggleGroupItem value="romance" asChild>
         <VibeButton active={value === "romance"}>Romance</VibeButton>
       </ToggleGroupItem>
