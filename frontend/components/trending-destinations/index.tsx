@@ -1,6 +1,10 @@
+'use client'
+
 import trendingDestinations, { type TrendingDestination as TrendingDestinationType } from "@/data/trending-destinations"
+import { useInView } from "react-intersection-observer"
 import Image from "next/image"
 import Link from "next/link"
+import { DelayedEnterAnimation } from "../ui/delayed-enter-animation"
 
 export default async function TrendingDestinations() {
 
@@ -11,17 +15,28 @@ function TrendingDestinationGrid({ trendingDestinations }: { trendingDestination
   const firstTwoDestinations = trendingDestinations.slice(0, 2)
   const nextThreeDestinations = trendingDestinations.slice(2, 5)
 
-  return <div className="flex flex-col gap-3">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-      {firstTwoDestinations.map(destination => (
-        <TrendingDestinationCard key={destination.heading} destination={destination} />
-      ))}
-    </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-      {nextThreeDestinations.map(destination => (
-        <TrendingDestinationCard key={destination.heading} destination={destination} />
-      ))}
-    </div>
+  const { ref, inView, entry } = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
+
+  return <div className="flex flex-col gap-3" ref={ref}>
+    {inView && <>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {firstTwoDestinations.map((destination, index) => (
+          <DelayedEnterAnimation key={destination.heading} index={index} totalItems={5} duration={1}>
+            <TrendingDestinationCard key={destination.heading} destination={destination} />
+          </DelayedEnterAnimation>
+        ))}
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        {nextThreeDestinations.map((destination, index) => (
+          <DelayedEnterAnimation key={destination.heading} index={2 + index} totalItems={5} duration={1}>
+            <TrendingDestinationCard key={destination.heading} destination={destination} />
+          </DelayedEnterAnimation>
+        ))}
+      </div>
+    </>}
   </div>
 }
 
