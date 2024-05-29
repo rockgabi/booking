@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Card,
   CardContent,
@@ -5,6 +7,7 @@ import {
 import recentSearches, { type RecentSearch as RecentSearchType } from "@/data/recent-search"
 import Image from "next/image"
 import Link from "next/link"
+import { DelayedEnterAnimation } from "../ui/delayed-enter-animation"
 
 export default async function RecentSearches() {
   // get data from API
@@ -19,7 +22,9 @@ type RecentSearchListProps = {
 export async function RecentSearchList({ recentSearches }: RecentSearchListProps) {
   return <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     {recentSearches.map((recentSearch, index) => (
-      <RecentSearch key={index} {...recentSearch} />
+      <DelayedEnterAnimation key={index} index={index} totalItems={recentSearches.length}>
+        <RecentSearch {...recentSearch} />
+      </DelayedEnterAnimation>
     ))}
   </div>
 }
@@ -33,7 +38,7 @@ type RecentSearchProps = {
 }
 
 export async function RecentSearch({ image, heading, date, numberOfPeople, href }: RecentSearchProps) {
-  return <Link href={href} className="hover:animate-pulse">
+  return <Link href={href} className="">
     <Card className="shadow-md">
       <CardContent className="flex items-center p-6 gap-6">
         <Image src={image} alt={heading} width={100} height={100} className="rounded w-[64px] h-[64px]" />
