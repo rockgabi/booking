@@ -63,3 +63,5 @@ const VibeButton = forwardRef(({ active, children, ...props }: Props, ref) => {
     {children}
   </Button>
 })
+
+VibeButton.displayName = "VibeButton"
