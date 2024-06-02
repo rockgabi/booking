@@ -20,23 +20,21 @@ function TrendingDestinationGrid({ trendingDestinations }: { trendingDestination
     threshold: 0.3,
   });
 
-  return <div className="flex flex-col gap-3" ref={ref}>
-    {inView && <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {firstTwoDestinations.map((destination, index) => (
-          <DelayedEnterAnimation key={destination.heading} index={index} totalItems={5} duration={1}>
-            <TrendingDestinationCard key={destination.heading} destination={destination} />
-          </DelayedEnterAnimation>
-        ))}
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {nextThreeDestinations.map((destination, index) => (
-          <DelayedEnterAnimation key={destination.heading} index={2 + index} totalItems={5} duration={1}>
-            <TrendingDestinationCard key={destination.heading} destination={destination} />
-          </DelayedEnterAnimation>
-        ))}
-      </div>
-    </>}
+  return <div className="flex flex-col gap-3" ref={ref} >
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      {firstTwoDestinations.map((destination, index) => (
+        <DelayedEnterAnimation key={destination.heading} index={index} totalItems={5} duration={1.5} stagger={0.1} shouldAnimate={inView}>
+          <TrendingDestinationCard key={destination.heading} destination={destination} />
+        </DelayedEnterAnimation>
+      ))}
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      {nextThreeDestinations.map((destination, index) => (
+        <DelayedEnterAnimation key={destination.heading} index={2 + index} totalItems={5} duration={1.5} stagger={0.1} shouldAnimate={inView}>
+          <TrendingDestinationCard key={destination.heading} destination={destination} />
+        </DelayedEnterAnimation>
+      ))}
+    </div>
   </div>
 }
 
