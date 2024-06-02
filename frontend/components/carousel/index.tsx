@@ -28,6 +28,8 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(({ children, s
   )
 })
 
+Carousel.displayName = "Carousel"
+
 interface RenderItemProps {
   [key: string]: any
 }
