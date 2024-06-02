@@ -12,7 +12,7 @@ type Props = {
 export function DelayedEnterAnimation({ children, index, totalItems, stagger = 0.1, duration = 0.5, shouldAnimate = true }: Props) {
   const animate = shouldAnimate ? { opacity: 1, y: 0 } : {}
   return <AnimatePresence mode="wait">
-    <motion.div initial={{
+    <motion.div className="h-full" initial={{
       // I want them to start invisible
       opacity: 0,
       y: 20,

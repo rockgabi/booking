@@ -6,7 +6,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { DelayedEnterAnimation } from "../ui/delayed-enter-animation"
 
-export default async function TrendingDestinations() {
+export default function TrendingDestinations() {
 
   return <TrendingDestinationGrid trendingDestinations={trendingDestinations} />
 }
