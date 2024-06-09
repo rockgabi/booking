@@ -2,19 +2,31 @@
 
 import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group"
 import { Button, ButtonProps } from "../ui/button"
-import { LegacyRef, ReactNode, forwardRef, useState } from "react"
+import { LegacyRef, ReactNode, forwardRef, useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 import { Carousel, CarouselList } from "../carousel"
 import GalleryItem from "../gallery-item"
-import tripPlannerItems from "@/data/trip-planner"
+import tripPlannerItemsData from "@/data/trip-planner"
+import { useInView } from "react-intersection-observer"
 
 export default function TripPlanner() {
   const [vibe, setVibe] = useState("romance")
+  const [tripPlannerItems, setTripPlannerItems] = useState(tripPlannerItemsData)
+  const { ref, inView, entry } = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  })
+
+  useEffect(() => {
+    // randomize the order of the items, and the randomize the id of the items
+    setTripPlannerItems(tripPlannerItemsData.sort(() => Math.random() - 0.5).map(item => ({ ...item, id: Math.random().toString(36).substring(7) })))
+    console.log(tripPlannerItems)
+  }, [vibe])
 
   return <div className="flex flex-col gap-4">
     <PlannerVibeSelector value={vibe} onValueChange={(v) => setVibe(v)} className="mx-[-12px]"/>
-    <Carousel>
-      <CarouselList data={tripPlannerItems} RenderItem={GalleryItem} carouselItemClassName="basis-1/3 sm:basis-1/4 md:basis-1/5 xl:basis-1/6" />
+    <Carousel ref={ref}>
+      <CarouselList data={tripPlannerItems} RenderItem={GalleryItem} carouselItemClassName="basis-1/3 sm:basis-1/4 md:basis-1/5 xl:basis-1/6" shouldAnimate={inView} />
     </Carousel>
   </div>
 }

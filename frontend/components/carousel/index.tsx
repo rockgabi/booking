@@ -45,7 +45,7 @@ export type CarouselListProps<D> = {
 export function CarouselList<D extends RenderItemProps>({ data, RenderItem, carouselItemClassName, shouldAnimate }: CarouselListProps<D>) {
 
   return data.map((props, index) => (
-    <CarouselItem key={index} className={cn("basis-1/3 xl:basis-1/4", carouselItemClassName)}>
+    <CarouselItem key={props.id ?? index} className={cn("basis-1/3 xl:basis-1/4", carouselItemClassName)}>
       <DelayedEnterAnimation index={index} totalItems={data.length} shouldAnimate={shouldAnimate}>
         <RenderItem {...props} />
       </DelayedEnterAnimation>

@@ -2,13 +2,14 @@ import Link from "next/link"
 import Image from "next/image"
 
 type Props = {
+  id?: string
   image: string
   heading: string
   subheading?: string
   href: string
 }
 
-export default function GalleryItem({ image, heading, subheading, href }: Props) {
+export default function GalleryItem({ id, image, heading, subheading, href }: Props) {
   return (
     <Link href={href} className="flex flex-col gap-4 hover:animate-pulse">
       <Image src={image} alt={heading} className="w-full h-auto object-cover rounded-lg" width={170} height={136} />
