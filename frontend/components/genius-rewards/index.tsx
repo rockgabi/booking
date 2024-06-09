@@ -18,7 +18,7 @@ export default function GeniusRewards() {
     threshold: 0.3,
   });
 
-  return <Carousel ref={ref}>
+  return <Carousel ref={ref} style={{ overflow: 'visible' }}>
     <CarouselList data={geniusRewards} RenderItem={geniusRewardsItem} carouselItemClassName="basis-1/1 md:basis-1/2 lg:basis-1/3 xl:basis-1/3" shouldAnimate={inView} />
   </Carousel>
 }
@@ -48,7 +48,7 @@ const geniusRewardsItemVariants = cva("", {
 
 function geniusRewardsItem({ heading, subHeading, href, variant, icon, className }: GeniusRewardsItem) {
   return <Link href={href} className="flex h-full">
-    <Card className={cn("shadow-md", geniusRewardsItemVariants({ variant, className }))}>
+    <Card className={cn("shadow-md mb-2", geniusRewardsItemVariants({ variant, className }))}>
       <CardContent className="flex flex-col items-center p-6 gap-6">
         <div className="flex w-full">
           <h3 className="text-lg font-bold">{heading}</h3>
