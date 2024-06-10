@@ -20,7 +20,6 @@ export default function TripPlanner() {
   useEffect(() => {
     // randomize the order of the items, and the randomize the id of the items
     setTripPlannerItems(tripPlannerItemsData.sort(() => Math.random() - 0.5).map(item => ({ ...item, id: Math.random().toString(36).substring(7) })))
-    console.log(tripPlannerItems)
   }, [vibe])
 
   return <div className="flex flex-col gap-4">
