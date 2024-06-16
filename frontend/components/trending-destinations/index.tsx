@@ -41,7 +41,7 @@ function TrendingDestinationGrid({ trendingDestinations }: { trendingDestination
 function TrendingDestinationCard({ destination }: { destination: TrendingDestinationType }) {
   return <Link href={destination.href} className="relative flex flex-col text-white px-4 py-6 min-h-[200px] xl:min-h-[270px]">
     <div className="absolute inset-0">
-      <Image fill={true} src={destination.image} alt={destination.heading} className="w-full h-full object-cover rounded-lg" />
+      <Image fill={true} src={destination.image} sizes={"50vw"} alt={destination.heading} className="w-full h-full object-cover rounded-lg" />
     </div>
     <div className="flex items-center z-[1] gap-2">
       <p className="text-xl font-bold drop-shadow-md">{destination.heading}</p>
