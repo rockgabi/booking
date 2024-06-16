@@ -4,6 +4,7 @@ import GeniusRewards from "@/components/genius-rewards";
 import Offers from "@/components/offers";
 import RecentSearches from "@/components/recent-search";
 import Section from "@/components/section";
+import TopUniqueProperties from "@/components/top-unique-properties";
 import TrendingDestinations from "@/components/trending-destinations";
 import TripPlanner from "@/components/trip-planner";
 
@@ -36,6 +37,10 @@ export default function Home() {
 
       <Section heading="Travel more, spend less">
         <GeniusRewards />
+      </Section>
+
+      <Section heading="Stay at our top unique properties" subheading="From castles and villas to boats and igloos, we have it all">
+        <TopUniqueProperties />
       </Section>
     </main>
   );
