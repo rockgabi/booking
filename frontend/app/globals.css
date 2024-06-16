@@ -37,6 +37,9 @@
 
   /* Dark Theme */
   .dark {
+    --darker-neon-blue: 216 100% 50%; /* Darker neon blue */
+    --better-neon-blue: 216 53% 22%; /* Better neon blue */
+
     --background: 240 5% 10%; /* Very dark navy blue */
     --foreground: 216 100% 70%; /* Vivid neon blue */
 
@@ -44,10 +47,10 @@
     --card-foreground: 48 100% 40%; /* Darker neon yellow */
 
     --popover: 240 5% 15%;
-    --popover-foreground: 330 80% 40%; /* Darker neon pink */
+    --popover-foreground: 330 90% 40%; /* Darker neon pink */
 
-    --primary: 216 100% 50%; /* Darker neon blue */
-    --primary-foreground: 240 5% 10%; /* Very dark navy blue */
+    --primary: var(--better-neon-blue); /* Darker neon blue */
+    --primary-foreground: 0 0% 80%; /* Very dark navy blue */
 
     --secondary: 48 100% 40%; /* Darker neon yellow */
     --secondary-foreground: 240 5% 10%; /* Very dark navy blue */
@@ -55,15 +58,15 @@
     --muted: 330 90% 40%; /* Darker neon pink */
     --muted-foreground: 0 0% 80%; /* Vivid neon blue */
 
-    --accent: 216 100% 50%; /* Darker neon blue */
+    --accent: var(--better-neon-blue); /* Darker neon blue */
     --accent-foreground: 0 0% 80%; /* Very dark navy blue */
 
     --destructive: 0 100% 30%; /* Darker red */
     --destructive-foreground: 240 5% 10%; /* Very dark navy blue */
 
-    --border: 216 100% 40%; /* Desaturated darker neon blue */
-    --input: 216 100% 40%;
-    --ring: 216 100% 70%; /* Vivid neon blue */
+    --border: var(--better-neon-blue); /* Desaturated darker neon blue */
+    --input: var(--better-neon-blue);
+    --ring: var(--better-neon-blue); /* Vivid neon blue */
   }
 }
 

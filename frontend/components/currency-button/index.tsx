@@ -18,8 +18,8 @@ type Props = {
 
 export default async function CurrencyButton({ className }: Props) {
   return <Dialog modal={true}>
-    <DialogTrigger className={className}>
-      USD
+    <DialogTrigger className={className} asChild>
+      <Button variant="ghost">USD</Button>
     </DialogTrigger>
     <DialogContent className="max-w-2xl max-h-[90vh] flex flex-col">
       <DialogHeader className="space-y-3">

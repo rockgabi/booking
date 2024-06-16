@@ -7,8 +7,7 @@ import { cn } from "@/lib/utils";
 import CurrencyButton from "./currency-button";
 import ServiceNav from "./service-nav";
 import { ModeToggle } from "./theme-mode-toggle";
-
-const buttonBg = "relative text-current before:absolute before:inset-0 before:content-[' '] before:bg-accent before:opacity-0 hover:before:opacity-[0.15] before:rounded px-3 py-2";
+import { Button } from "./ui/button";
 
 export default async function Header() {
   const session = await getServerSession()
@@ -18,24 +17,22 @@ export default async function Header() {
       <div className="container flex flex-col max-w-[1174px]">
         <div className="flex justify-between items-center px-4 py-2 mx-4">
           <h1 className="text-2xl font-bold"><Link href="/">Booking</Link></h1>
-          <nav className="flex space-x-3 items-center">
+          <nav className="flex gap-1 items-center">
             <CurrencyButton className={cn(
-              'hidden lg:flex',
-              buttonBg
+              'hidden lg:flex'
             )} />
 
-            <NotificationButton notifications={notifications} className={buttonBg} />
+            <NotificationButton notifications={notifications} />
 
             <Link href="/list-your-property" className={cn(
-              "hidden lg:block leading-6 min-h-[32px] font-semibold",
-              buttonBg
-            )}>List your property</Link>
+              "hidden lg:block leading-6 min-h-[32px]"
+            )}><Button variant="ghost">List your property</Button></Link>
 
             {
               session ? (
-                <SessionButton className={buttonBg} />
+                <SessionButton  />
               ) : (
-                <Link href="/api/auth/signin" className={buttonBg}>Sign In</Link>
+                <Link href="/api/auth/signin" ><Button variant="ghost">Sign In</Button></Link>
               )
             }
 

@@ -26,8 +26,10 @@ export default function NotificationButton({ notifications, className }: Props) 
 
   if (isDesktop) return (
     <DropdownMenu>
-      <DropdownMenuTrigger className={className}>
-        <IconWithNotificationNumber>{notifications.length}</IconWithNotificationNumber>
+      <DropdownMenuTrigger className={className} asChild>
+        <Button variant="ghost">
+          <IconWithNotificationNumber>{notifications.length}</IconWithNotificationNumber>
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="max-w-[360px]">
         <DropdownMenuLabel>Notifications</DropdownMenuLabel>
