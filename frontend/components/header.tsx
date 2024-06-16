@@ -6,6 +6,7 @@ import SessionButton from "./session-button";
 import { cn } from "@/lib/utils";
 import CurrencyButton from "./currency-button";
 import ServiceNav from "./service-nav";
+import { ModeToggle } from "./theme-mode-toggle";
 
 const buttonBg = "relative text-current before:absolute before:inset-0 before:content-[' '] before:bg-accent before:opacity-0 hover:before:opacity-[0.15] before:rounded px-3 py-2";
 
@@ -37,6 +38,8 @@ export default async function Header() {
                 <Link href="/api/auth/signin" className={buttonBg}>Sign In</Link>
               )
             }
+
+            <ModeToggle />
           </nav>
         </div>
 

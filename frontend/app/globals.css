@@ -35,34 +35,35 @@
     --radius: 0.5rem;
   }
 
+  /* Dark Theme */
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 240 5% 10%; /* Very dark navy blue */
+    --foreground: 216 100% 70%; /* Vivid neon blue */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 5% 15%; /* Slightly lighter very dark navy blue */
+    --card-foreground: 48 100% 40%; /* Darker neon yellow */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 5% 15%;
+    --popover-foreground: 330 80% 40%; /* Darker neon pink */
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 216 100% 50%; /* Darker neon blue */
+    --primary-foreground: 240 5% 10%; /* Very dark navy blue */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 48 100% 40%; /* Darker neon yellow */
+    --secondary-foreground: 240 5% 10%; /* Very dark navy blue */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 330 90% 40%; /* Darker neon pink */
+    --muted-foreground: 0 0% 80%; /* Vivid neon blue */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 216 100% 50%; /* Darker neon blue */
+    --accent-foreground: 0 0% 80%; /* Very dark navy blue */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 100% 30%; /* Darker red */
+    --destructive-foreground: 240 5% 10%; /* Very dark navy blue */
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 216 100% 40%; /* Desaturated darker neon blue */
+    --input: 216 100% 40%;
+    --ring: 216 100% 70%; /* Vivid neon blue */
   }
 }
 
