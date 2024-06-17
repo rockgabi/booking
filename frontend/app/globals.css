@@ -28,6 +28,8 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
+    --subtitle: var(--foreground);
+
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
@@ -37,32 +39,41 @@
 
   /* Dark Theme */
   .dark {
+    --vivid-neon-blue: 216 100% 70%;
     --darker-neon-blue: 216 100% 50%; /* Darker neon blue */
-    --better-neon-blue: 216 53% 22%; /* Better neon blue */
+    --better-neon-blue: 216 100% 30%; /* Better neon blue */
+    --darker-neon-pink: 330 100% 30%;
+    --better-neon-pink: 330 100% 50%;
+    --darker-navy-blue: 240 5% 10%;
+    --darker-navy-grey: 240 5% 15%;
+    --darker-neon-yellow: 48 100% 40%;
+    --white-ish: 0 0% 80%;
 
     --background: 240 5% 10%; /* Very dark navy blue */
     --foreground: 216 100% 70%; /* Vivid neon blue */
 
-    --card: 240 5% 15%; /* Slightly lighter very dark navy blue */
-    --card-foreground: 48 100% 40%; /* Darker neon yellow */
+    --card: var(--darker-navy-grey); /* Slightly lighter very dark navy blue */
+    --card-foreground: var(--darker-neon-yellow); /* Darker neon yellow */
 
-    --popover: 240 5% 15%;
-    --popover-foreground: 330 90% 40%; /* Darker neon pink */
+    --popover: var(--darker-navy-grey);
+    --popover-foreground: var(--better-neon-pink); /* Darker neon pink */
 
     --primary: var(--better-neon-blue); /* Darker neon blue */
-    --primary-foreground: 0 0% 80%; /* Very dark navy blue */
+    --primary-foreground: var(--white-ish); /* Very dark navy blue */
 
-    --secondary: 48 100% 40%; /* Darker neon yellow */
+    --secondary: var(--darker-neon-yellow); /* Darker neon yellow */
     --secondary-foreground: 240 5% 10%; /* Very dark navy blue */
 
-    --muted: 330 90% 40%; /* Darker neon pink */
-    --muted-foreground: 0 0% 80%; /* Vivid neon blue */
+    --muted: var(--darker-neon-pink); /* Darker neon pink */
+    --muted-foreground: var(--white-ish); /* Vivid neon blue */
 
     --accent: var(--better-neon-blue); /* Darker neon blue */
-    --accent-foreground: 0 0% 80%; /* Very dark navy blue */
+    --accent-foreground: var(--white-ish); /* Very dark navy blue */
 
     --destructive: 0 100% 30%; /* Darker red */
     --destructive-foreground: 240 5% 10%; /* Very dark navy blue */
+
+    --subtitle: var(--white-ish); 
 
     --border: var(--better-neon-blue); /* Desaturated darker neon blue */
     --input: var(--better-neon-blue);
@@ -76,5 +87,9 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  h1,h2,h3,h4,h5,h6 {
+    
   }
 }

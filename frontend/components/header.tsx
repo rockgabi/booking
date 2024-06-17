@@ -13,11 +13,11 @@ export default async function Header() {
   const session = await getServerSession()
 
   return (
-    <header className="bg-gray-800 text-white">
+    <header className="bg-gray-800 text-primary-foreground">
       <div className="container flex flex-col max-w-[1174px]">
         <div className="flex justify-between items-center px-4 py-2 mx-4">
           <h1 className="text-2xl font-bold"><Link href="/">Booking</Link></h1>
-          <nav className="flex gap-1 items-center">
+          <nav className="flex gap-2 items-center">
             <CurrencyButton className={cn(
               'hidden lg:flex'
             )} />
@@ -26,13 +26,13 @@ export default async function Header() {
 
             <Link href="/list-your-property" className={cn(
               "hidden lg:block leading-6 min-h-[32px]"
-            )}><Button variant="ghost">List your property</Button></Link>
+            )} passHref legacyBehavior><Button variant="ghost">List your property</Button></Link>
 
             {
               session ? (
                 <SessionButton  />
               ) : (
-                <Link href="/api/auth/signin" ><Button variant="ghost">Sign In</Button></Link>
+                <Link href="/api/auth/signin" passHref legacyBehavior><Button variant="ghost">Sign In</Button></Link>
               )
             }
 
