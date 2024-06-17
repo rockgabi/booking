@@ -4,8 +4,14 @@
 
 @layer base {
   :root {
+    --darker-blue: 222.2 47.4% 11.2%;
+    --white: 0 0% 100%;;
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
+
+    --background-alt: var(--darker-blue);
+    --foreground-alt: var(--white);
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -13,17 +19,17 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: var(--darker-blue);
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-foreground: var(--darker-blue);
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
     --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent-foreground: var(--darker-blue);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -39,7 +45,7 @@
 
   /* Dark Theme */
   .dark {
-    --vivid-neon-blue: 216 100% 70%;
+    --vivid-neon-blue: 216 100% 60%;
     --darker-neon-blue: 216 100% 50%; /* Darker neon blue */
     --better-neon-blue: 216 100% 30%; /* Better neon blue */
     --darker-neon-pink: 330 100% 30%;
@@ -50,7 +56,10 @@
     --white-ish: 0 0% 80%;
 
     --background: 240 5% 10%; /* Very dark navy blue */
-    --foreground: 216 100% 70%; /* Vivid neon blue */
+    --foreground: var(--vivid-neon-blue); /* Vivid neon blue */
+
+    --background-alt: var(--darker-navy-grey); /* Darker navy blue */
+    --foreground-alt: var(--white-ish); /* Better neon blue */
 
     --card: var(--darker-navy-grey); /* Slightly lighter very dark navy blue */
     --card-foreground: var(--darker-neon-yellow); /* Darker neon yellow */

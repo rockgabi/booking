@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
 
   // It should be a 3-column list of links footer. Above the columns there should be a logo with a link to the home
-  return <footer className="flex justify-center p-4 bg-gray-800 text-white">
+  return <footer className="flex justify-center p-4 bg-alt text-alt-foreground">
     <div className="flex flex-col container mx-auto gap-8">
       <h1 className="text-2xl font-bold"><Link href="/">Booking</Link></h1>
       <div className="flex flex-wrap flex-col sm:flex-row gap-8 sm:gap-0">

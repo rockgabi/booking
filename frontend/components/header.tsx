@@ -13,7 +13,7 @@ export default async function Header() {
   const session = await getServerSession()
 
   return (
-    <header className="bg-gray-800 text-primary-foreground">
+    <header className="bg-alt text-alt-foreground">
       <div className="container flex flex-col max-w-[1174px]">
         <div className="flex justify-between items-center px-4 py-2 mx-4">
           <h1 className="text-2xl font-bold"><Link href="/">Booking</Link></h1>
