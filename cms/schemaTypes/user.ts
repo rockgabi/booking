@@ -32,6 +32,16 @@ export default {
       type: 'url'
     },
     {
+      name: 'geniusLevel',
+      title: 'Genius Level',
+      type: 'string',
+      options: {
+        list: ['beginner', 'advanced', 'expert'],
+        layout: 'radio'
+      },
+      initialValue: 'beginner'
+    },
+    {
       // this is only if you use credentials provider
       name: 'password',
       type: 'string',
