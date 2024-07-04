@@ -36,7 +36,7 @@ export default {
       title: 'Genius Level',
       type: 'string',
       options: {
-        list: ['beginner', 'advanced', 'expert'],
+        list: [{ title: 'Beginner', value: 'beginner'}, { title: 'Advanced', value: 'advanced'}, { title: 'Expert', value: 'expert'}],
         layout: 'radio'
       },
       initialValue: 'beginner'
@@ -52,5 +52,8 @@ export default {
       type: 'datetime',
       hidden: true,
     }
-  ]
+  ],
+  initialValue: {
+    geniusLevel: 'beginner'
+  }
 };

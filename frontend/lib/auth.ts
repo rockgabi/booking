@@ -1,6 +1,19 @@
-import NextAuth, { NextAuthOptions, getServerSession as _getServerSession } from 'next-auth';
-import { SanityAdapter, SanityCredentials } from 'next-auth-sanity';
+import NextAuth, { DefaultSession, NextAuthOptions, getServerSession as _getServerSession } from 'next-auth';
+import { SanityAdapter } from 'next-auth-sanity';
 import GithubProvider from 'next-auth/providers/github';
+
+declare module 'next-auth' {
+  interface User {
+    geniusLevel?: string;
+  }
+
+  interface Session {
+    user: {
+      id: string;
+      geniusLevel?: string;
+    } & DefaultSession["user"];
+  }
+}
 
 import sanityClient from '../lib/sanity';
 
@@ -9,6 +22,15 @@ export const authOptions: NextAuthOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID as string,
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+      profile(profile) {
+        return {
+          id: profile.id,
+          email: profile.email,
+          name: profile.name,
+          image: profile.avatar_url,
+          geniusLevel: 'beginner',
+        };
+      },
     }),
   ],
   session: {
@@ -20,9 +42,10 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     session: async ({ session, token }) => {
       const userEmail = token.email;
-      const userIdObj = await sanityClient.fetch<{ _id: string }>(
+      const userIdObj = await sanityClient.fetch<{ _id: string, geniusLevel: string }>(
         `*[_type == "user" && email == $email][0] {
-            _id
+            _id,
+            geniusLevel
         }`,
         { email: userEmail }
       );
@@ -31,6 +54,7 @@ export const authOptions: NextAuthOptions = {
         user: {
           ...session.user,
           id: userIdObj._id,
+          geniusLevel: userIdObj.geniusLevel || token.geniusLevel,
         },
       };
     },

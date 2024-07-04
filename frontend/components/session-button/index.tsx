@@ -30,7 +30,7 @@ export default async function SessionButton({ className }: Props) {
         <AvatarIcon />
         <div className="hidden lg:flex flex-col items-start">
           <span className="text-sm font-semibold">{session.user.name}</span>
-          <span className="text-xs">Beginner</span>
+          <span className="text-xs">{session.user.geniusLevel}</span>
         </div>
       </Button>
     </DropdownMenuTrigger>
