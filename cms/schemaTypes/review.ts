@@ -13,10 +13,10 @@ export default {
       validation: rule => rule.required()
     }),
     defineField({
-      name: 'hotelRoom',
-      title: 'Hotel Room',
+      name: 'stay',
+      title: 'Stay',
       type: 'reference',
-      to: [{ type: 'hotelRoom' }],
+      to: [{ type: 'stay' }],
       validation: rule => rule.required()
     }),
     defineField({

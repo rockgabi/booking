@@ -40,6 +40,14 @@ export const authOptions: NextAuthOptions = {
   debug: process.env.NODE_ENV === 'development',
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
+    jwt: async ({ token, user }) => {
+      console.log('User ', user)
+      if (user) {
+        token.id = user.id;
+        token.geniusLevel = user.geniusLevel;
+      }
+      return token;
+    },
     session: async ({ session, token }) => {
       const userEmail = token.email;
       const userIdObj = await sanityClient.fetch<{ _id: string, geniusLevel: string }>(
@@ -49,14 +57,17 @@ export const authOptions: NextAuthOptions = {
         }`,
         { email: userEmail }
       );
-      return {
+      //console.log('userIdObj', userIdObj)
+      const ret = {
         ...session,
         user: {
           ...session.user,
-          id: userIdObj._id,
+          id: userIdObj._id || token.id,
           geniusLevel: userIdObj.geniusLevel || token.geniusLevel,
         },
       };
+      //console.log('ret', ret)
+      return ret;
     },
   },
 };
